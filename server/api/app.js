@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const cors = require('cors')
 const {rateLimit } = require('express-rate-limit');
 
-
+const { appRouter } = require('./routes');
 const {logErrors, clientErrorHandler, errorHandler} = require('../common/error')
 
 
@@ -25,8 +25,8 @@ app.use(express.json()); // deserialization
 app.use(cors());
 app.use(morgan('combined')) // ragister entry.
 
-// app.use('/api', apiRateLimiter); // rate limiting
-// app.use('/api', appRoutes) // health routes 
+app.use('/api', apiRateLimiter); // rate limiting
+app.use('/api', appRouter) // health routes 
 
 
 /**

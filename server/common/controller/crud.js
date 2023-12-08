@@ -11,8 +11,8 @@ class CRUDController extends BaseController {
         this.model = model;
     }
 
-    // All routes find 
-    async find(res, query) {
+   
+     async  find(res, query)  {
         try {
             const queryRes = await this.model.find(query);
             return res.status(StatusCodes.OK).json(fmt_res(queryRes));
@@ -21,7 +21,6 @@ class CRUDController extends BaseController {
         }
     }
 
-    // find by id 
     async findById(req, id) {
         try{
             const queryRes = await this.model.findById(id);
@@ -30,7 +29,7 @@ class CRUDController extends BaseController {
             this.errorHandler(res, error);
         }
     }
-    // main page find 
+  
 
     async paginatedFind(res, pagination, query){
         try {
